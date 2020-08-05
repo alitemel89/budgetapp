@@ -1,4 +1,3 @@
-
 // BUDGET CONTROLLER
 var budgetController = (function() {
 
@@ -247,6 +246,13 @@ var controller = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('Application has started.');
             setupEventListeners();
+            UICtrl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: -1
+                 
+            });
         }
     }
 
