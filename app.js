@@ -97,6 +97,25 @@ var budgetController = (function() {
                 percentage: data.percentage
                  
             }
+        },
+
+        deleteItem: function(type, id) {
+            var ids, index;
+            //id = 6
+            //data.allItems[type][id]
+            //ids = [1 2 4 6 8]
+            //index=3
+
+            var ids = data.allItems[type].map(function(current) {
+                return current.id;
+            })
+
+            index = ids.indexOf(id)
+
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1)
+            }
+
         }
 
     };
@@ -254,9 +273,10 @@ var controller = (function(budgetCtrl, UICtrl) {
             //inc-1
             splitID = itemID.split('-')
             type = splitID[0]
-            ID = splitID[1]
+            ID = parseInt(splitID[1])
 
             //1. Delete the item from data structure
+            budgetController.deleteItem(type, ID)
 
             //2. Delete the item from UI
 
